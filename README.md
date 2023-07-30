@@ -5,7 +5,7 @@ Starting a new project
 # Start the project
 npx nuxi init projectname
 # OR
-pnpm dlx nuxi init projectname
+pnpm dlx nuxi@latest init projectname
 
 # Install
  
