@@ -1,0 +1,17 @@
+name: "Manual Deploy"
+run-name: Deploy to ${{ github.event.client_payload.cluster }} from ${{ github.event.client_payload.branch }}
+
+on: [push]
+
+jobs:
+    manual:
+      concurrency: ${{ github.workflow }}-deploy-staging
+      uses: rafaelscone/template/.github/workflows/s3-deploy.yaml@master
+      with:
+        #runner: ${{ (contains(inputs.helm_values, 'staging') || contains(inputs.helm_values, 'qa')) && 'runner-ubuntu-staging' || 'runner-ubuntu' }}
+        #environment: ${{ inputs.helm_values }}
+        ref: ${{ inputs.branch }}
+        npm_build: ${{ inputs.npm_build }}
+        build_install_cmd: ${{ inputs.build_install_cmd }}
+        build_cmd: ${{ (contains(inputs.helm_values, 'production')) && inputs.build_production_cmd || (contains(inputs.helm_values, 'qa')) && inputs.build_qa_cmd || inputs.build_staging_cmd }}
+        
