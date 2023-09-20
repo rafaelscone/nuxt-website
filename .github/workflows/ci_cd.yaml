@@ -4,14 +4,10 @@ run-name: Deploy to ${{ github.event.client_payload.cluster }} from ${{ github.e
 on: [push]
 
 jobs:
-    manual:
-      concurrency: ${{ github.workflow }}-deploy-staging
-      uses: rafaelscone/template/.github/workflows/s3-deploy.yaml@master
-      with:
-        #runner: ${{ (contains(inputs.helm_values, 'staging') || contains(inputs.helm_values, 'qa')) && 'runner-ubuntu-staging' || 'runner-ubuntu' }}
-        #environment: ${{ inputs.helm_values }}
-        ref: "branch"
-        npm_build: "build"
-        build_install_cmd: "ok"
-        build_cmd: "ok2"
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: run ok
+                run: |
+                    echo "ok"
         
