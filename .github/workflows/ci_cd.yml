@@ -1,18 +1,11 @@
-name: "Manual Deploy"
-run-name: Deploy to ${{ github.event.client_payload.cluster }} from ${{ github.event.client_payload.branch }}
-
+# Create github action to run tests
+name: Run tests
 on: [push]
-
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-        -   name: run ok
-            run: |
-                echo "ok"
-        -   name: Use Node.js
-            uses: actions/setup-node@v3
-            with:
-                node-version: 18.x
-        
-        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          echo "Running tests"
