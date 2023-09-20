@@ -10,8 +10,8 @@ jobs:
       with:
         #runner: ${{ (contains(inputs.helm_values, 'staging') || contains(inputs.helm_values, 'qa')) && 'runner-ubuntu-staging' || 'runner-ubuntu' }}
         #environment: ${{ inputs.helm_values }}
-        ref: ${{ inputs.branch }}
-        npm_build: ${{ inputs.npm_build }}
-        build_install_cmd: ${{ inputs.build_install_cmd }}
-        build_cmd: ${{ (contains(inputs.helm_values, 'production')) && inputs.build_production_cmd || (contains(inputs.helm_values, 'qa')) && inputs.build_qa_cmd || inputs.build_staging_cmd }}
+        ref: "branch"
+        npm_build: "build"
+        build_install_cmd: "ok"
+        build_cmd: "ok2"
         
