@@ -93,10 +93,16 @@ pnpm prisma init
 
 ## Configure file .env with database url
 
+# Code to execute migration
+pnpm prisma migrate dev --name init
+
 # If you want to create model from bd
 pnpm prisma db pull
 
 # Generate prisma
 pnpm prisma generate
+
+# Show the database
+pnpm prisma studio
 ```
 
