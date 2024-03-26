@@ -93,16 +93,17 @@ export default {
                 query(collection(db, "message"), where("user", "==", this.user)),
                 (snap) => {
                     snap.docChanges().forEach((change) => {
-                        if (change.type === "added") {
-                            console.log("New: ", change.doc.data())
-                            this.messages.push(change.doc.data())
-                        }
-                        if (change.type === "modified") {
-                            console.log("Modified: ", change.doc.data())
-                        }
-                        if (change.type === "removed") {
-                            console.log("Removed: ", change.doc.data())
-                        }
+                        this.messages.push(change.doc.data())
+                        //if (change.type === "added") {
+                        //    console.log("New: ", change.doc.data())
+                        //    this.messages.push(change.doc.data())
+                        //}
+                        //if (change.type === "modified") {
+                        //    console.log("Modified: ", change.doc.data())
+                        //}
+                        //if (change.type === "removed") {
+                        //    console.log("Removed: ", change.doc.data())
+                        //}
                     })
                 }
             )
